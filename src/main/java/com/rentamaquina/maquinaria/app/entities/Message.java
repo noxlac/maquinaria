@@ -34,12 +34,13 @@ public class Message implements Serializable {
     private int idMessage;
     private String messageText;
     @ManyToOne
-    @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("messages")
-    private Client client;
-    @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties("messages")
     private Machine machine;
+    @ManyToOne
+    @JoinColumn(name="idClient")
+    @JsonIgnoreProperties("messages")
+    private Client client;
+    
     
 }
