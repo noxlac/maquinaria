@@ -33,5 +33,5 @@ public class Category {
     @Column(nullable=true,unique=false)
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
     @JsonIgnoreProperties("category")
-    private List<Machine> machines;
+    private List<Machine> machine;
 }
