@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.rentamaquina.maquinaria.app.services;
 
 import com.rentamaquina.maquinaria.app.entities.Message;
@@ -11,10 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author fdomoreno
- */
+
 @Service
 public class MessageService {
     
@@ -44,8 +37,10 @@ public class MessageService {
      * @return 
      */
     public Message updateMessage(Message message){
-        Message existingMessage = repository.findById(message.getId()).orElse(null);
-        existingMessage.setMessagetext(message.getMessagetext());
+        Message existingMessage = repository.findById(message.getIdMessage()).orElse(null);
+        existingMessage.setMessageText(message.getMessageText());
+        existingMessage.setClient(message.getClient());
+        existingMessage.setMachine(message.getMachine());
         return repository.save(existingMessage);
     }
     

@@ -1,9 +1,18 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.rentamaquina.maquinaria.app.controllers;
 
+/**
+ *
+ * @author AKS
+ */
 
-import com.rentamaquina.maquinaria.app.entities.Client;
-import com.rentamaquina.maquinaria.app.services.ClientService;
+
+import com.rentamaquina.maquinaria.app.entities.Category;
+import com.rentamaquina.maquinaria.app.services.CategoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,31 +26,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("Client")
-public class ClientController {
+@RequestMapping("Category")
+public class CategoryController {
     @Autowired
-    private ClientService service;
+    private CategoryService service;
     
     @GetMapping("/all")
-    public List<Client> findAllClient(){
-        return service.getClients();
+    public List<Category> findAllCategory(){
+        return service.getCategories();
     }
     
     @PostMapping("/save")
-    public ResponseEntity addClient(@RequestBody Client client){
-        service.saveClient(client);
+    public ResponseEntity addCategory(@RequestBody Category category){
+        service.saveCategories(category);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
-    public ResponseEntity updateClient(@RequestBody Client client){
-        service.updateClient(client);
+    public ResponseEntity updateCategory(@RequestBody Category category){
+        service.updateCategories(category);
         return ResponseEntity.status(201).build();
     }
     
     @DeleteMapping("/delete")
-    public ResponseEntity deleteClient(@RequestBody Client client){
-        service.deleteClient(client.getIdClient());
+    public ResponseEntity deleteCategory(@RequestBody Category category){
+        service.deleteCategory(category.getId());
         return ResponseEntity.status(204).build();
     }
 }

@@ -6,8 +6,9 @@
 package com.rentamaquina.maquinaria.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,28 +18,30 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
  *
- * @author fdomoreno
+ * @author AKS
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="message")
-public class Message implements Serializable {
+@Table(name="reservation")
+public class Reservation {
     @Id
     @GeneratedValue
-    private int idMessage;
-    private String messageText;
-    @ManyToOne
-    @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("message")
-    private Client client;
+    private int idReservation;
+    private Date startDate;
+    private Date devolutionDate;
+    private String status;
+    @Column(nullable=true)
+    private int score;
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties("message")
+    @JsonIgnoreProperties("reservation")
     private Machine machine;
-    
+    @ManyToOne
+    @JoinColumn(name="idClient")
+    @JsonIgnoreProperties("reservation")
+    private Client client;   
 }

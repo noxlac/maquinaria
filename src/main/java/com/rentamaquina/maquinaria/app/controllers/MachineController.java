@@ -9,33 +9,42 @@ import com.rentamaquina.maquinaria.app.entities.Machine;
 import com.rentamaquina.maquinaria.app.services.MachineService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author fdomoreno
- */
-@RestController                             //Esta clase es un controlador REST
-@RequestMapping("Machine")                  // Donde se va a tomar o mapear todos los request(lo que se envia)    Response es respuesta
+
+@RestController
+@RequestMapping("Machine")
 public class MachineController {
+    @Autowired
+    private MachineService service;
     
-    @Autowired                              // POr favor inyectele las dependencias que necesita.
-    private MachineService service;         // una instancia de la clase 
-    
-    @GetMapping("/all")                     // Se le indica al metodo que va a recibir un GET con @GETMAPPING, LE AGREGO /ALL PARA COMPLETAR LA RUTA DEL RECURSO
-    public List<Machine> findAllMachine(){  // Un metodo que retorne una lista de máquinas.
-        return service.getMachines();       // Retorna las maquinas
+    @GetMapping("/all")
+    public List<Machine> findAllMachine(){
+        return service.getMachines();
     }
     
-    @PostMapping("/save")                                               // Para completar la ruta
-    public ResponseEntity addMachine(@RequestBody Machine machine){     // Responsive (respuesta) ser recibe en una clase de spring boot que permite responder, le esta diciendo que en el body voy a recibir una ma´quina
-        service.saveMachine(machine);                                   // Lo que recibo se la paso a service 
-        return ResponseEntity.status(201).build();       // Retorne un 201
+    @PostMapping("/save")
+    public ResponseEntity addMachine(@RequestBody Machine machine){
+        service.saveMachine(machine);
+        return ResponseEntity.status(201).build();
+    }
+    
+    @PutMapping("/update")
+    public ResponseEntity updateMachine(@RequestBody Machine machine){
+        service.updateMachine(machine);
+        return ResponseEntity.status(201).build();
+    }
+    
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteMachine(@RequestBody Machine machine){
+        service.deleteMachine(machine.getId());
+        return ResponseEntity.status(204).build();
     }
 }

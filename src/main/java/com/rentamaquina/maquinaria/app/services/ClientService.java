@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.rentamaquina.maquinaria.app.services;
 
 import com.rentamaquina.maquinaria.app.entities.Client;
@@ -11,16 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author fdomoreno
- */
+
 @Service
 public class ClientService {
     
     @Autowired
     private ClientRepository repository;
-    
     /**
      * GET Consultar Todos los registros.
      * @return 
@@ -28,7 +20,6 @@ public class ClientService {
     public List<Client> getClients(){
         return repository.findAll();
     }
-    
     /**
      * POST Crear o Registrar.
      * @param client
@@ -37,17 +28,19 @@ public class ClientService {
     public Client saveClient(Client client){
         return repository.save(client);
     }
-    
     /**
      * PUT Actualizar o Editar
      * @param client
      * @return 
      */
     public Client updateClient(Client client){
-        Client existingClient = repository.findById(client.getId()).orElse(null);
+        Client existingClient = repository.findById(client.getIdClient()).orElse(null);
         existingClient.setName(client.getName());
         existingClient.setEmail(client.getEmail());
+        existingClient.setPassword(client.getPassword());
         existingClient.setAge(client.getAge());
+        existingClient.setMessages(client.getMessages());
+        existingClient.setReservations(client.getReservations());
         return repository.save(existingClient);
     }
     

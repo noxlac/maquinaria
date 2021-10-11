@@ -1,9 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.rentamaquina.maquinaria.app.controllers;
 
-
-import com.rentamaquina.maquinaria.app.entities.Client;
-import com.rentamaquina.maquinaria.app.services.ClientService;
+import com.rentamaquina.maquinaria.app.entities.Reservation;
+import com.rentamaquina.maquinaria.app.services.ReservationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,31 +20,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("Client")
-public class ClientController {
+@RequestMapping("Reservation")
+public class ReservationController {
     @Autowired
-    private ClientService service;
+    private ReservationService service;
     
     @GetMapping("/all")
-    public List<Client> findAllClient(){
-        return service.getClients();
+    public List<Reservation> findAllReservation(){
+        return service.getReservations();
     }
     
     @PostMapping("/save")
-    public ResponseEntity addClient(@RequestBody Client client){
-        service.saveClient(client);
+    public ResponseEntity addReservation(@RequestBody Reservation reservation){
+        service.saveReservations(reservation);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
-    public ResponseEntity updateClient(@RequestBody Client client){
-        service.updateClient(client);
+    public ResponseEntity updateReservation(@RequestBody Reservation reservation){
+        service.updateReservations(reservation);
         return ResponseEntity.status(201).build();
     }
     
     @DeleteMapping("/delete")
-    public ResponseEntity deleteClient(@RequestBody Client client){
-        service.deleteClient(client.getIdClient());
+    public ResponseEntity deleteReservation(@RequestBody Reservation reservation){
+        service.deleteReservation(reservation.getIdReservation());
         return ResponseEntity.status(204).build();
     }
 }
