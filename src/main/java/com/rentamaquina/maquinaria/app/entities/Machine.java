@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,7 +35,7 @@ import org.hibernate.annotations.Cascade;
 public class Machine implements Serializable {  // Implemento que sea SERIALIZABLE para poder mapear.
     
     @Id                                         // Indica cual es el identificador, siempre se escribe ID no tiene que ve con el nombre del campo, identifica la llave primaria.
-    @GeneratedValue                             // Genera valor para el id automaticamente.
+    @GeneratedValue(strategy= GenerationType.TABLE)                           // Genera valor para el id automaticamente.
     private int id;
     private String name;
     private String brand;

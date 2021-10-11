@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name="reservation")
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private int idReservation;
     private Date startDate;
     private Date devolutionDate;
@@ -38,10 +39,10 @@ public class Reservation {
     private int score;
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Machine machine;
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Client client;   
 }

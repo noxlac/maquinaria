@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,16 +30,16 @@ import lombok.NoArgsConstructor;
 @Table(name="message")
 public class Message implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private int idMessage;
     private String messageText;
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("message")
+    @JsonIgnoreProperties("messages")
     private Client client;
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties("message")
+    @JsonIgnoreProperties("messages")
     private Machine machine;
     
 }

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Client implements Serializable {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.TABLE)
     private int idClient;
     @Column(length=50)                                  // Le dice que el campo de abajo tiene maximo 50 caracteres
     private String name;
