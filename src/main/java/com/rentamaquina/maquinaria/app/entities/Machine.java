@@ -42,7 +42,7 @@ public class Machine implements Serializable {  // Implemento que sea SERIALIZAB
     private String description;
     @ManyToOne
     @JoinColumn(name="idCategory")
-    @JsonIgnoreProperties("machine")
+    @JsonIgnoreProperties("machines")
     private Category category;
     @Column(nullable=true)
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="machine")
