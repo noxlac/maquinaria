@@ -34,16 +34,15 @@ public class Reservation {
     private int idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status;
-    @Column(nullable=true)
-    private int score;
+    private String status = "created";
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"reservations","'messages':'machine':{}","messages:client:[]"})
+    @JsonIgnoreProperties("reservations")
     private Machine machine;
     @ManyToOne
     @JoinColumn(name="idClient")
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
-       
+    @Column(nullable=true)
+    private int score;
 }
