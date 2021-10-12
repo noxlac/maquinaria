@@ -51,7 +51,7 @@ public class Machine implements Serializable {  // Implemento que sea SERIALIZAB
     private List<Message> messages;
     @Column(nullable=true)
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="machine")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties("machine")
     private List<Reservation> reservations;
        
 }
