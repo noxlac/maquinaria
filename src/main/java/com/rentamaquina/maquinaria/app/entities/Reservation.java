@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name="reservation")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idReservation;
     private Date startDate;
     private Date devolutionDate;
@@ -39,10 +39,10 @@ public class Reservation {
     private int score;
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties("machine")
     private Machine machine;
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties("client")
     private Client client;   
 }

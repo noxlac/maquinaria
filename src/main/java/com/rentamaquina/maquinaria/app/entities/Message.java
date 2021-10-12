@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name="message")
 public class Message implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idMessage;
     private String messageText;
     @ManyToOne

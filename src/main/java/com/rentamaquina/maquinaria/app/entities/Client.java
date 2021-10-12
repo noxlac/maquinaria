@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Client implements Serializable {
     
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idClient;
     @Column(name="email",nullable=false,length=50,unique=true)  // con name le puedo cambiar el nombre de abajo para mapearlo diferente, nulleable false dice que el campo no puede ser nulo, le puedo decir que sea unico.
     private String email;
