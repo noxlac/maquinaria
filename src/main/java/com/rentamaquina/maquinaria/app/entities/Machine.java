@@ -42,8 +42,7 @@ public class Machine implements Serializable {  // Implemento que sea SERIALIZAB
     private int year;
     private String description;
     @ManyToOne
-    @JoinColumn(name="id")
-    @Column(name="idCategory")
+    @JoinColumn(name="idCategory")
     @JsonIgnoreProperties("machines")
     private Category category;
     @Column(nullable=true)
