@@ -45,5 +45,5 @@ public class Reservation {
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     @Column(nullable=true)
-    private String score = "none";
+    private String score = null;
 }
