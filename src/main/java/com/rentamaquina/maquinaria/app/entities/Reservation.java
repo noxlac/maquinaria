@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import static net.bytebuddy.matcher.ElementMatchers.none;
 /**
  *
  * @author AKS
@@ -44,5 +45,5 @@ public class Reservation {
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     @Column(nullable=true)
-    private int score;
+    private String score = "none";
 }
