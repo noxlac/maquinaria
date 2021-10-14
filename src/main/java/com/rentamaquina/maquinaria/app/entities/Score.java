@@ -32,7 +32,6 @@ public class Score implements Serializable {
     private Integer stars;
 
     @OneToOne(mappedBy = "score", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("score")
     private Reservation reservation;
 }
 

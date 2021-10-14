@@ -51,7 +51,6 @@ public class Reservation implements Serializable {
     
     @OneToOne
     @JoinColumn(name = "idScore", updatable = false, nullable = false)
-    @JsonIgnoreProperties("reservation")
     private Score score;
 
 }
