@@ -2,6 +2,7 @@
 package com.rentamaquina.maquinaria.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="category")
 
-public class Category {
+public class Category implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
