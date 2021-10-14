@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Score implements Serializable {
     private String messageText;
     private Integer stars;
 
-    @OneToOne(mappedBy = "score", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     private Reservation reservation;
 }
 

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,8 +50,7 @@ public class Reservation implements Serializable {
     private Client client;
     @Column(nullable=true)
     
-    @OneToOne
-    @JoinColumn(name = "idScore", updatable = false, nullable = false)
-    private Score score;
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+     private Score score;
 
 }
