@@ -50,7 +50,7 @@ public class Reservation implements Serializable {
     private Client client;
     @Column(nullable=true)
     
-    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy="reservation")
      private Score score;
 
 }
