@@ -7,6 +7,7 @@ package com.rentamaquina.maquinaria.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public class Score implements Serializable {
     private String messageText;
     private Integer stars;
 
-    @OneToOne
+    @OneToOne(mappedBy = "score", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("score")
     private Reservation reservation;
 }
