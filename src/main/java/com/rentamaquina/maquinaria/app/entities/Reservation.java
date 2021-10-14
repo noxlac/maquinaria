@@ -48,7 +48,6 @@ public class Reservation implements Serializable {
     @JoinColumn(name="idClient")
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
-    @Column(nullable=true)
     
     @OneToOne(mappedBy="reservation")
      private Score score;
