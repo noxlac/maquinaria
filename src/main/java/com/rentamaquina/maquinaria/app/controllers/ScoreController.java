@@ -65,7 +65,7 @@ public class ScoreController {
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int scoreId) {
+    public boolean delete(@PathVariable("id") Integer scoreId) {
         return service.deleteScore(scoreId);
     }
     

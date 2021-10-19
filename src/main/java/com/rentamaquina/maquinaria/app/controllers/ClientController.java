@@ -62,7 +62,7 @@ public class ClientController {
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int clientId) {
+    public boolean delete(@PathVariable("id") Integer clientId) {
         return service.deleteClient(clientId);
     }
     
