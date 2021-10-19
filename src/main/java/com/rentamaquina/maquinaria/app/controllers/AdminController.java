@@ -1,9 +1,11 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.rentamaquina.maquinaria.app.controllers;
-
-
-import com.rentamaquina.maquinaria.app.entities.Client;
-import com.rentamaquina.maquinaria.app.services.ClientService;
+import com.rentamaquina.maquinaria.app.entities.Admin;
+import com.rentamaquina.maquinaria.app.services.AdminService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,51 +21,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("Client")
-public class ClientController {
-   
+@RequestMapping("Admin")
+public class AdminController {
+    
     @Autowired
-    private ClientService service;
+    private AdminService service;
     
     /**
      * GET
      * @return 
      */
     @GetMapping("/all")
-    public List<Client> getClients(){
+    public List<Admin> getAdmins(){
         return service.getAll();
     }
     
     /**
      * POST
-     * @param client
+     * @param admin
      * @return 
      */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client) {
-        return service.save(client);
+    public Admin save(@RequestBody Admin admin) {
+        return service.save(admin);
     }
     
     /**
      * PUT
-     * @param client
+     * @param admin
      * @return 
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client update(@RequestBody Client client) {
-        return service.update(client);
+    public Admin update(@RequestBody Admin admin) {
+        return service.update(admin);
     }
     
     /**
      * DELETE
-     * @param clientId
+     * @param adminId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int clientId) {
-        return service.deleteClient(clientId);
+    public boolean delete(@PathVariable("id") int adminId) {
+        return service.deleteAdmin(adminId);
     }
+    
     
 }

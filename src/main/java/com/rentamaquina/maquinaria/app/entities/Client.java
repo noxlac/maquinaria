@@ -24,13 +24,13 @@ public class Client implements Serializable {
     
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idClient;
+    private Integer idClient;
     @Column(name="email",nullable=false,length=50,unique=true)  // con name le puedo cambiar el nombre de abajo para mapearlo diferente, nulleable false dice que el campo no puede ser nulo, le puedo decir que sea unico.
     private String email;
     private String password;
     @Column(length=50)                                  // Le dice que el campo de abajo tiene maximo 50 caracteres
     private String name;
-    private int age;
+    private Integer age;
     @Column(nullable=true)
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
     @JsonIgnoreProperties("client")

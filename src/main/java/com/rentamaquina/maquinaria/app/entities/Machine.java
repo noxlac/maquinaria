@@ -36,10 +36,10 @@ public class Machine implements Serializable {  // Implemento que sea SERIALIZAB
     
     @Id                                         // Indica cual es el identificador, siempre se escribe ID no tiene que ve con el nombre del campo, identifica la llave primaria.
     @GeneratedValue(strategy= GenerationType.IDENTITY)                         // Genera valor para el id automaticamente.
-    private int id;
+    private Integer id;
     private String name;
     private String brand;
-    private int year;
+    private Integer year;
     private String description;
     @ManyToOne
     @JoinColumn(name="idCategory")

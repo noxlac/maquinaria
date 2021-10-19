@@ -36,7 +36,7 @@ import static net.bytebuddy.matcher.ElementMatchers.none;
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idReservation;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status = "created";
@@ -49,7 +49,8 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     
-    @OneToOne(mappedBy="reservation")
+    @OneToOne(cascade={CascadeType.REMOVE},mappedBy="reservation")
+    @JsonIgnoreProperties("reservations")
      private Score score;
 
 }

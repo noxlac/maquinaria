@@ -7,9 +7,9 @@ package com.rentamaquina.maquinaria.app.services;
 
 
 import com.rentamaquina.maquinaria.app.entities.Score;
-import com.rentamaquina.maquinaria.app.repositories.ReservationRepository;
 import com.rentamaquina.maquinaria.app.repositories.ScoreRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,48 +19,82 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ScoreService {
-    @Autowired
+  @Autowired
     private ScoreRepository repository;
+    
     /**
-     * GET Consultar Todos los registros.
+     * GET
      * @return 
      */
-    public List<Score> getScories(){
-        return repository.findAll();
-    }
-    /**
-     * POST Crear o Registrar.
-     * @param category
-     * @return 
-     */
-    public Score saveScories(Score score){
-        return repository.save(score);
+    public List<Score> getAll(){
+        return repository.getAll();
     }
     
     /**
-     * PUT Actualizar o Editar
-     * @param category
+     * Buscar por ID
+     * @param scoreId
      * @return 
      */
-    public Score updateScories(Score score){
-        Score existingScore = repository.findById(score.getIdScore()).orElse(null);
-        existingScore.setMessageText(score.getMessageText());
-        existingScore.setStars(score.getStars());
-              
-        return repository.save(existingScore);
-                      
+    public Optional<Score> getScore(int scoreId){
+        return repository.getScore(scoreId);
     }
     
     /**
-     * DELETE Eliminar
-     * @param id
+     * POST
+     * @param score
      * @return 
      */
-    public String deleteScore(int id){
-        repository.deleteById(id);
-        return "Score eliminada "+ id;
+    public Score save(Score score){
+        if(score.getIdScore()==null){
+            return repository.save(score);
+        }else{
+            Optional<Score> resultado = repository.getScore(score.getIdScore());
+            if(resultado.isPresent()){
+                return score;
+            }else{
+                return repository.save(score);
+            }
+        }
     }
     
+    /**
+     * UPDATE
+     * @param score
+     * @return 
+     */
+    public Score update(Score score){
+        if(score.getIdScore()!=null){
+            Optional<Score> resultado = repository.getScore(score.getIdScore());
+            if(resultado.isPresent()){
+                if(score.getMessageText()!=null){
+                    resultado.get().setMessageText(score.getMessageText());
+                }
+                if(score.getStars()!=null){
+                    resultado.get().setStars(score.getStars());
+                }
+                repository.save(resultado.get());
+                return resultado.get();
+            }else{
+                return score;
+            }
+        }else{
+            return score;
+        }
+    }
+    
+    /**
+     * DELETE
+     * @param scoreId
+     * @return 
+     */
+    public boolean deleteScore(int scoreId) {
+        Boolean aBoolean = getScore(scoreId).map(score -> {
+            repository.delete(score);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
 }
 
 

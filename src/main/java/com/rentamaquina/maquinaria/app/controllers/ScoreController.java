@@ -1,9 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.rentamaquina.maquinaria.app.controllers;
 
-
-import com.rentamaquina.maquinaria.app.entities.Client;
-import com.rentamaquina.maquinaria.app.services.ClientService;
+import com.rentamaquina.maquinaria.app.entities.Score;
+import com.rentamaquina.maquinaria.app.services.ScoreService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,51 +22,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("Client")
-public class ClientController {
-   
+@RequestMapping("Score")
+public class ScoreController {
+    
     @Autowired
-    private ClientService service;
+    private ScoreService service;
     
     /**
      * GET
      * @return 
      */
     @GetMapping("/all")
-    public List<Client> getClients(){
+    public List<Score> getScores(){
         return service.getAll();
     }
     
     /**
      * POST
-     * @param client
+     * @param score
      * @return 
      */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client) {
-        return service.save(client);
+    public Score save(@RequestBody Score score) {
+        return service.save(score);
     }
     
     /**
      * PUT
-     * @param client
+     * @param score
      * @return 
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client update(@RequestBody Client client) {
-        return service.update(client);
+    public Score update(@RequestBody Score score) {
+        return service.update(score);
     }
     
     /**
      * DELETE
-     * @param clientId
+     * @param scoreId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int clientId) {
-        return service.deleteClient(clientId);
+    public boolean delete(@PathVariable("id") int scoreId) {
+        return service.deleteScore(scoreId);
     }
+    
     
 }

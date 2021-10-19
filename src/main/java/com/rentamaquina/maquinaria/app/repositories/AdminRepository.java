@@ -5,53 +5,52 @@
  */
 package com.rentamaquina.maquinaria.app.repositories;
 
-import com.rentamaquina.maquinaria.app.entities.Score;
-import com.rentamaquina.maquinaria.app.repositories.crud.ScoreCrudRepository;
+import com.rentamaquina.maquinaria.app.entities.Admin;
+import com.rentamaquina.maquinaria.app.repositories.crud.AdminCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 /**
  *
  * @author AKS
  */
 @Repository
-public class ScoreRepository  {
-      @Autowired
-    private ScoreCrudRepository scoreCrudRepository;
+public class AdminRepository {
+    @Autowired
+    private AdminCrudRepository adminCrudRepository;
     
     /**
      * Select
      * @return 
      */
-    public List<Score> getAll(){
-        return (List<Score>) scoreCrudRepository.findAll();
+    public List<Admin> getAll(){
+        return (List<Admin>) adminCrudRepository.findAll();
     }
     
     /**
      * Insert
-     * @param score
+     * @param admin
      * @return 
      */
-    public Score save(Score score){
-        return scoreCrudRepository.save(score);
+    public Admin save(Admin admin){
+        return adminCrudRepository.save(admin);
     }
     /**
      * Buscar registro
-     * @param scoreId
+     * @param adminId
      * @return 
      */
-    public Optional<Score> getScore(int scoreId){
-        return scoreCrudRepository.findById(scoreId);
+    public Optional<Admin> getAdmin(int adminId){
+        return adminCrudRepository.findById(adminId);
     }
 
     /**
      * Delete
-     * @param score 
+     * @param admin 
      */
-    public void delete(Score score){
-        scoreCrudRepository.delete(score);
+    public void delete(Admin admin){
+        adminCrudRepository.delete(admin);
     }
     
 }
