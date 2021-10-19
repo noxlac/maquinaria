@@ -42,7 +42,7 @@ public class ScoreRepository  {
      * @param scoreId
      * @return 
      */
-    public Optional<Score> getScore(int scoreId){
+    public Optional<Score> getScore(Integer scoreId){
         return scoreCrudRepository.findById(scoreId);
     }
 

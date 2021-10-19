@@ -84,7 +84,7 @@ public class MachineService {
      * @param machineId
      * @return 
      */
-    public boolean deleteMachine(int machineId) {
+    public boolean deleteMachine(Integer machineId) {
         Boolean aBoolean = getMachine(machineId).map(machine -> {
             repository.delete(machine);
             return true;

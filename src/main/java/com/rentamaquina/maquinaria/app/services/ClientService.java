@@ -88,7 +88,7 @@ public class ClientService {
      * @param clientId
      * @return 
      */
-    public boolean deleteClient(int clientId) {
+    public boolean deleteClient(Integer clientId) {
         Boolean aBoolean = getClient(clientId).map(client -> {
             repository.delete(client);
             return true;

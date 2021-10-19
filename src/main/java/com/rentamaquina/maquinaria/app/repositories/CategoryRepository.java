@@ -40,7 +40,7 @@ public class CategoryRepository {
      * @param categoryId
      * @return 
      */
-    public Optional<Category> getCategory(int categoryId){
+    public Optional<Category> getCategory(Integer categoryId){
         return categoryCrudRepository.findById(categoryId);
     }
 

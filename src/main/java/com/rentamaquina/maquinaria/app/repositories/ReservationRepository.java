@@ -42,7 +42,7 @@ public class ReservationRepository {
      * @param reservationId
      * @return 
      */
-    public Optional<Reservation> getReservation(int reservationId){
+    public Optional<Reservation> getReservation(Integer reservationId){
         return reservationCrudRepository.findById(reservationId);
     }
 

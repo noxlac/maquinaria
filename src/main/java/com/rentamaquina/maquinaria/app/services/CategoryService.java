@@ -88,7 +88,7 @@ public class CategoryService {
      * @param categoryId
      * @return 
      */
-    public boolean deleteCategory(int categoryId) {
+    public boolean deleteCategory(Integer categoryId) {
         Boolean aBoolean = getCategory(categoryId).map(category -> {
             repository.delete(category);
             return true;

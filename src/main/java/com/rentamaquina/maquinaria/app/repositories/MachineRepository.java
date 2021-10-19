@@ -42,7 +42,7 @@ public class MachineRepository{
      * @param machineId
      * @return 
      */
-    public Optional<Machine> getMachine(int machineId){
+    public Optional<Machine> getMachine(Integer machineId){
         return machineCrudRepository.findById(machineId);
     }
 

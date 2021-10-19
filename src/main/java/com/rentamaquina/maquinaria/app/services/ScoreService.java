@@ -87,7 +87,7 @@ public class ScoreService {
      * @param scoreId
      * @return 
      */
-    public boolean deleteScore(int scoreId) {
+    public boolean deleteScore(Integer scoreId) {
         Boolean aBoolean = getScore(scoreId).map(score -> {
             repository.delete(score);
             return true;

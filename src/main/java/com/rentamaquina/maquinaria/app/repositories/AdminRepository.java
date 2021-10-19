@@ -41,7 +41,7 @@ public class AdminRepository {
      * @param adminId
      * @return 
      */
-    public Optional<Admin> getAdmin(int adminId){
+    public Optional<Admin> getAdmin(Integer adminId){
         return adminCrudRepository.findById(adminId);
     }
 

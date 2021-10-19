@@ -42,7 +42,7 @@ public class MessageRepository {
      * @param messageId
      * @return 
      */
-    public Optional<Message> getMessage(int messageId){
+    public Optional<Message> getMessage(Integer messageId){
         return messageCrudRepository.findById(messageId);
     }
 

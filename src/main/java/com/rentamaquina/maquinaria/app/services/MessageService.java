@@ -75,7 +75,7 @@ public class MessageService {
      * @param messageId
      * @return 
      */
-    public boolean deleteMessage(int messageId) {
+    public boolean deleteMessage(Integer messageId) {
         Boolean aBoolean = getMessage(messageId).map(message -> {
             repository.delete(message);
             return true;

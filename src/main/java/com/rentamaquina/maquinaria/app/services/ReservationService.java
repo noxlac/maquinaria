@@ -85,7 +85,7 @@ public class ReservationService {
      * @param reservationId
      * @return 
      */
-    public boolean deleteReservation(int reservationId) {
+    public boolean deleteReservation(Integer reservationId) {
         Boolean aBoolean = getReservation(reservationId).map(reservation -> {
             repository.delete(reservation);
             return true;

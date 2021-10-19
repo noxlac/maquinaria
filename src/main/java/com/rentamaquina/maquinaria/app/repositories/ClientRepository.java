@@ -38,7 +38,7 @@ public class ClientRepository {
      * @param clientId
      * @return 
      */
-    public Optional<Client> getClient(int clientId){
+    public Optional<Client> getClient(Integer clientId){
         return clientCrudRepository.findById(clientId);
     }
 

@@ -89,7 +89,7 @@ public class AdminService {
      * @param adminId
      * @return 
      */
-    public boolean deleteAdmin(int adminId) {
+    public boolean deleteAdmin(Integer adminId) {
         Boolean aBoolean = getAdmin(adminId).map(admin -> {
             repository.delete(admin);
             return true;
