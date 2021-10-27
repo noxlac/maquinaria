@@ -120,7 +120,7 @@ public class ReservationService {
             dateTwo=parser.parse(d2);
             
         } catch(ParseException e){
-       //     e.printStackTrace();
+           e.printStackTrace();
         }
         if(dateOne.before(dateTwo)){
             return repository.getReservationByPeriod(dateOne, dateTwo);
