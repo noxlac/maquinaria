@@ -82,7 +82,7 @@ public class ReservationController {
     
     @GetMapping("/report-clients")
     public List<CounCliente>  getCountCliente(){
-        return service.getTopCliente();
+        return service.getTopClientes();
                
     }
     

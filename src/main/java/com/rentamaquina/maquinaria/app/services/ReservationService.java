@@ -99,7 +99,7 @@ public class ReservationService {
         return aBoolean;
     }
 
-    public List<CounCliente> getTopCliente() {
+    public List<CounCliente> getTopClientes() {
         return repository.getTopClientes();
     }
     

@@ -72,12 +72,12 @@ public class ReservationRepository {
         
         List<Object[]> report =reservationCrudRepository.countReservationByClient();
         for(int i=0;i<report.size();i++){
-            Client cli=(Client) report.get(i)[0];
+            /* Client cli=(Client) report.get(i)[0];
             Integer cantidad=(Integer) report.get(i)[1];
             CounCliente cc=new CounCliente(cantidad,cli);
             res.add(cc);
-            
-            // res.add(new CounCliente((Integer) report.get(i)[1],(Client)report.get(i)[0] ));
+            */
+             res.add(new CounCliente((Integer) report.get(i)[1],(Client)report.get(i)[0] ));
         }
          return res;
         }

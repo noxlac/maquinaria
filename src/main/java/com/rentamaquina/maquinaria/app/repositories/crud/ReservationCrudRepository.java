@@ -18,11 +18,11 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ReservationCrudRepository  extends CrudRepository<Reservation,Integer> {
     
-    
+    @Query("select c.client, COUNT(c.client)  from Reservation AS c group by c.client order by COUNT(c.client) desc")  
+    public List<Object[]> countReservationByClient();
     public List<Reservation> findAllByStartDateAfterAndStartDateBefore (Date dateone, Date DateTwo); 
     public List<Reservation> findAllByStatus(String status);
-    @Query("SELECT c.client, COUNT(c.client)  from Reservation As c group by c.client order by COUNT(c.client) desc")  
-    public List<Object[]> countReservationByClient();
-    
+   
      
 }
+ 
