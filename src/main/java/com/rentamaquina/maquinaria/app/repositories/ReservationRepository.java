@@ -77,7 +77,7 @@ public class ReservationRepository {
             CounCliente cc=new CounCliente(cantidad,cli);
             res.add(cc);
             */
-             res.add(new CounCliente((Integer) report.get(i)[1],(Client)report.get(i)[0] ));
+             res.add(new CounCliente((Long) report.get(i)[1],(Client)report.get(i)[0] ));
         }
          return res;
         }

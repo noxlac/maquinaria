@@ -12,19 +12,19 @@ import com.rentamaquina.maquinaria.app.entities.Client;
  * @author AKS
  */
 public class CounCliente {
-    private Integer total;
+    private Long total;
     private Client cliente;
 
-    public CounCliente(Integer total, Client cliente) {
+    public CounCliente(Long total, Client cliente) {
         this.total = total;
         this.cliente = cliente;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 
